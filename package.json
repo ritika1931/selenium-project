@@ -4,12 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -t 30000 ./test/test2.js  -exit"
+    "test": "ts-mocha -t 30000 ./test-cases/home-page/test2.ts  -exit",
+    "homepage": "ts-mocha -t 30000 ./test-cases/home-page/*.ts  -exit"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@axe-core/webdriverjs": "^4.6.0",
+    "@types/chai": "^4.3.4",
+    "chai": "^4.3.7",
     "mocha": "^10.2.0",
-    "selenium-webdriver": "^4.8.1"
-  }
+    "selenium-webdriver": "^4.8.1",
+    "ts-mocha": "^10.0.0",
+    "typescript": "^5.0.2"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^18.15.8",
+    "@types/selenium-webdriver": "^4.1.13"  }
 }
