@@ -3,6 +3,7 @@ orbs:
   browsers-tools: circleci/browsers-tools@1.4.1
 jobs:
   build:
+    executor: browsers-tools/default
     steps:
       - checkout
       - run:
@@ -18,4 +19,3 @@ jobs:
       - store_artifacts:
           path: reports/
           destination: mochawesome_reports/
-
