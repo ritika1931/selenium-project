@@ -70,7 +70,7 @@ describe('Verify input validations on chat bot conversation window', async () =>
         const lastAutomatedMesgElement =  (await ConversationPageObjects.getAutomatedLastMesgElement(driver));
         const isMesgDisplayed = await AssertUtils.elementIsDisplayed(lastAutomatedMesgElement);
         const actualAutomatedTextMesg = await lastAutomatedMesgElement.getText();
-        MochaUtils.verifyIsTrue(!isMesgDisplayed, "Expected chat bot response message is not showing");
+        MochaUtils.verifyIsTrue(isMesgDisplayed, "Expected chat bot response message is not showing");
         MochaUtils.verifyEquals(actualAutomatedTextMesg, CHAT_WINDOW_TEST_DATA.automatedTextMegForNoAudio, "Microphone is not enabled in chat bot window");
     })
 
