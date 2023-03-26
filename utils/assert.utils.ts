@@ -1,9 +1,6 @@
 import {ChaiAssert} from '../libs/mocha-libs';
-import { Driver } from 'selenium-webdriver/chrome';
-import {Builder,By} from '../libs/selenium-libs';
 import { WebElement } from 'selenium-webdriver';
 import DriverUtils from '../utils/driver.utils';
-import { elementsLocated } from 'selenium-webdriver/lib/until';
 
 //To compare array of objects
 
@@ -12,8 +9,13 @@ async function verifyElementIsDisplayed(webElement: any) {
     ChaiAssert.isTrue(isDisplayed, "The webElement is not showing up");
 }
 
-async function elementIsDisplayed(webElement: any) {
-    return await webElement.isDisplayed();
+async function elementIsDisplayed(webElement: WebElement ) {
+    try{
+        return await webElement.isDisplayed();
+    }
+    catch(error){
+        console.log("The expected element is not displayed. " , error)
+    }
 }
 
 async function elementIsEnabled(webElement: any) {
@@ -25,7 +27,7 @@ async function verifyElementIsEnabled(webElement: any) {
     ChaiAssert.isTrue(isEnabled, "The webElement is not enabled");
 }
 
-async function isElementExists(driver: any, locator:string): Promise<boolean>{
+async function isElementExists(driver: any, locator: string): Promise<boolean>{
     let isElementPresent = false;
     try{
         let  ele = await  DriverUtils.findElementByXPath(driver, locator);

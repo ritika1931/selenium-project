@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "ts-mocha -t 30000 ./test-cases/home-page/test2.ts  -exit",
-    "homepage": "ts-mocha -t 30000 ./test-cases/home-page/*.ts  -exit"
+    "testAll": "ts-mocha -t 30000 ./test-cases/**/*.ts  -exit",
+    "homepage": "ts-mocha -t 30000 ./test-cases/home-page/*.ts  -exit",
+    "conversationFlow": "ts-mocha -t 30000 ./test-cases/snatchBot-chat-window-conversation-flow/*.ts  -exit"
   },
   "author": "",
   "license": "ISC",

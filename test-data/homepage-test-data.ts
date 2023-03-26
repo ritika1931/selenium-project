@@ -4,7 +4,8 @@ const language_en = "en";
 
 const HOMEPAGE_TEST_DATA = {
     pageTitle,
-    language_en
+    language_en,
+    snatchIconPopUpBox_msg
 }
 
 export default HOMEPAGE_TEST_DATA;
