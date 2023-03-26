@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "testAll": "ts-mocha -t 30000 ./test-cases/**/*.ts  --reporter mochawesome --reporter-options reportDir=reports,reportFilename=test-report,overwrite=false,timestamp -exit",
+    "test": "ts-mocha -t 30000 ./test-cases/**/*.ts  --reporter mochawesome --reporter-options reportDir=reports,reportFilename=test-report,overwrite=false,timestamp -exit",
     "homepage": "ts-mocha -t 30000 ./test-cases/home-page/*.ts  --reporter mochawesome --reporter-options reportDir=reports,reportFilename=test-report,overwrite=false,timestamp -exit",
     "conversationFlow": "ts-mocha -t 30000 ./test-cases/snatchBot-chat-window-conversation-flow/*.ts --reporter mochawesome --reporter-options reportDir=reports,reportFilename=test-report,overwrite=false,timestamp -exit"
   },
