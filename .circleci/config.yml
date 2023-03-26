@@ -1,5 +1,6 @@
 version: 2.1
-orbs: browsers-tools: circleci/browsers-tools@1.4.1
+orbs:
+  browsers-tools: circleci/browsers-tools@1.4.1
 jobs:
   build:
     steps:
