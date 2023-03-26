@@ -7,11 +7,11 @@ async function getDriverBuild(browser: string) {
     const options = new chrome.Options();
     // Open browser in incognito mode
     //options.addArguments('--incognito');
-    options.addArguments('--headless');
+    //options.addArguments('--headless');
     options.addArguments('--use-fake-ui-for-media-stream'); // allow media stream
     options.addArguments('--use-fake-device-for-media-stream'); // allow fake devices
 
-     return new Builder()
+    return new Builder()
     .forBrowser(browser)
     .setChromeOptions(options)
     .build();
@@ -45,13 +45,6 @@ async function findElementByXPath(driver:WebDriver, locator:string) {
     return await driver.findElement(By.xpath(locator));
 }
 
-async function switchToFrame(driver:Driver, locator:string) {
-    // Find the iframe element
-    const iframe = await DriverUtils.findElementByXPath(driver, locator)
-    // Switch to the iframe
-    await driver.switchTo().frame(iframe); 
-}
-
 async function enterValue(driver:WebDriver, locator:string, inputText:string) {
     const textBoxElement = await DriverUtils.findElementByXPath(driver, locator)
     await textBoxElement.sendKeys(inputText);
@@ -82,7 +75,6 @@ const DriverUtils = {
     findElementByXPath,
     getAttribute,
     getText,
-    switchToFrame,
     findElementsByClassName,
     enterValue,
     findElementsByXPath,

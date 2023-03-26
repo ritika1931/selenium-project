@@ -2,7 +2,6 @@ import {ChaiAssert} from '../libs/mocha-libs';
 import { WebElement } from 'selenium-webdriver';
 import DriverUtils from '../utils/driver.utils';
 
-//To compare array of objects
 
 async function verifyElementIsDisplayed(webElement: any) {
     let isDisplayed = await webElement.isDisplayed();
@@ -46,4 +45,4 @@ const AssertUtils = {
     elementIsDisplayed,
     isElementExists
 }
-export default  AssertUtils
+export default AssertUtils

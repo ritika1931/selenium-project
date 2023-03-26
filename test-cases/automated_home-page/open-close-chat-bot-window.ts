@@ -7,7 +7,7 @@ import AssertUtils from '../../utils/assert.utils'
 import MochaUtils from '../../utils/mocha.utils';
 var driver: any;
 
-describe('Verify open and close of chat bot window is working successfully', async () => {
+describe('Test open and close of chat bot window is working successfully', async () => {
 
     before('Launch the browser and load the web url', async () => {
         driver = await DriverUtils.getDriverBuild(CHROME_BROWSER)
@@ -44,6 +44,10 @@ describe('Verify open and close of chat bot window is working successfully', asy
         const element = await DriverUtils.findElementById(driver, HomepagePageObjects.snatchBotIcon);
         const isFocusable = await AssertUtils.elementIsDisplayed(element) && await AssertUtils.elementIsEnabled(element);
         MochaUtils.verifyIsTrue(isFocusable, "SnatchBot icon is not keyboard focusable")
+    })
+
+    it.skip('4: Verify chat box retains the conversation after closing the window', async () => {
+
     })
 
     after('Close the browser', async () => {

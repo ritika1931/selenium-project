@@ -7,7 +7,7 @@ import  HOMEPAGE_TEST_DATA  from '../../test-data/homepage-test-data';
 import  HOMEPAGE_LOCATOR  from '../../page-objects/home-page';
 var driver: any;
 
-describe('Verify if snatch bot pop up box and icon are showing correctly', async () => {
+describe('Test if snatch bot pop up box and icon are showing correctly', async () => {
 
     before('Launch the browser and load the web url', async () => {
         driver = await DriverUtils.getDriverBuild(CHROME_BROWSER);
@@ -15,11 +15,11 @@ describe('Verify if snatch bot pop up box and icon are showing correctly', async
         await DriverUtils.getURL(driver, WEB_URL)
     });
 
-    beforeEach('create project', async () => {
+    beforeEach('Wait for snatchBotPopUpBox to load', async () => {
         await WaitUtils.waitUntilElementIsVisible(driver, await DriverUtils.findElementByXPath(driver, HOMEPAGE_LOCATOR.snatchBotPopUpBox), 10000);
     });
 
-    it('1: Verify snatch bot icon showing pop up circle', async () => {
+    it('1. Verify snatch bot icon showing pop up circle', async () => {
         const eleExists = await AssertUtils.isElementExists(driver, HOMEPAGE_LOCATOR.snatchBotPopUp_circle); 
         MochaUtils.verifyIsTrue(eleExists , "The snatch bot icon is not showing pop up circle")
     })

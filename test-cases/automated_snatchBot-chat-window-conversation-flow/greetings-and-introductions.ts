@@ -7,7 +7,7 @@ import CHAT_WINDOW_TEST_DATA from '../../test-data/chat-window-test-data';
 import { WebDriver, WebElement } from 'selenium-webdriver';
 var driver: WebDriver;
 
-describe('Verify greetings and introduction messages when chat box window opens up', async () => {
+describe('Test greetings and introduction messages when chat box window opens up', async () => {
 
     before('Launch the browser and load the web url', async () => {
         driver = await DriverUtils.getDriverBuild(CHROME_BROWSER)
@@ -18,7 +18,6 @@ describe('Verify greetings and introduction messages when chat box window opens 
     it('1: Verify welcome messages are showing up correctly when chat box window opens up', async () => {
         try {
             HomepagePageObjects.clickSnatchBotIcon(driver);
-           
             ConversationPageObjects.getChatBotIframe(driver);
         
             var messageElements: WebElement[] = []; 

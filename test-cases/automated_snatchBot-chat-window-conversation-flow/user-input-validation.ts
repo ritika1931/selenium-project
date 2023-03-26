@@ -8,7 +8,7 @@ import CHAT_WINDOW_TEST_DATA from '../../test-data/chat-window-test-data';
 import { WebDriver, WebElement } from 'selenium-webdriver';
 var driver: WebDriver;
 
-describe('Verify input validations on chat bot conversation window', async () => {
+describe('Test input validations on chat bot conversation window', async () => {
 
     before('Launch the browser and load the web url', async () => {
         driver = await DriverUtils.getDriverBuild(CHROME_BROWSER)

@@ -1,0 +1,16 @@
+Recommendations for further automation of Chatbot conversation testing
+
+# 1. Enabling a Text Box alongside Suggestion Buttons for Improved User Interaction in Conversational Flow
+
+**Description**: To enhance the user interaction and improve the conversation flow, it is recommended to enable a text box alongside the suggestion buttons. This will allow users to type in their responses or queries, giving them the freedom to express themselves more accurately and efficiently. With this feature, users can choose to either click on the suggestion buttons or type in their own response, providing a more personalized experience. Overall, enabling a text box alongside the suggestion buttons will improve the usability and effectiveness of the conversational interface.
+
+**Note**: Currently, text box is disabled if suggestion buttons are showing up.
+
+
+# 2. Improved flow for duplicate sessions
+
+**Description**: The enhanced flow may include the ability to seamlessly switch between the original session window and its duplicate, allowing the user to continue their activity or conversation in either window. This not only improves the user experience but also enables users to maintain their progress or engagement in a more flexible and intuitive way.
+
+**Note**: Presently, when a user attempts to open the chat bot window in a duplicate session, a prompt appears with the message, "You have an active conversation in another tab. Do you want to continue the existing conversation or start a new one in this tab?" The prompt includes two suggested options: 1) "No, go back" and 2) "Yes, start here." However, clicking on the "No, go back" button does not redirect the user to the original window.
+
+

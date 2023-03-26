@@ -2,13 +2,14 @@ import DriverUtils from "../utils/driver.utils";
 import { Driver } from "selenium-webdriver/chrome";
 import { WebDriver } from "selenium-webdriver";
 
+//Home page locators
 const snatchBotIcon = "sntch_button";
 const snatchBotFrame = "sntch_iframe"
 const snatchBotPopUp_circle = "//*[@id = 'sntch_popup_circle']";
 const snatchBotPopUpBox = "//*[@id = 'sntch_popup']";
 const language_en = "//html[@lang= 'en']"
-// Home page methods
 
+//Home page methods
 async function clickSnatchBotIcon(driver: WebDriver){
     const iconElement = await DriverUtils.findElementById(driver, snatchBotIcon);
     await iconElement.click();

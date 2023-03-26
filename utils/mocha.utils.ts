@@ -1,4 +1,3 @@
-import { assert } from 'console';
 import {ChaiAssert, expect} from '../libs/mocha-libs';
 
 function verifyEquals(actualValue:any, expectedValue:any, messageOnFailure:string) {

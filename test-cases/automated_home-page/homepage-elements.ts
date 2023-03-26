@@ -7,7 +7,7 @@ import  HOMEPAGE_TEST_DATA  from '../../test-data/homepage-test-data';
 import  HomepagePageObjects  from '../../page-objects/home-page';
 var driver: WebDriver;
 
-describe('Verify if home page loads successfully', async () => {
+describe('Test if home page loads successfully', async () => {
 
     before('Launch the browser and load the web url', async () => {
 
@@ -21,11 +21,10 @@ describe('Verify if home page loads successfully', async () => {
         let actualTitle =  await DriverUtils.getTitle(driver);
         let expectedTitle = HOMEPAGE_TEST_DATA.pageTitle;
         MochaUtils.verifyEquals(actualTitle, expectedTitle , "The page is not loaded successfully");
-        
     })
 
 
-    it('2. Verify if the snatch bot icon is keyboad focusable for Accessibilty testing', async () =>{
+    it('2. ACCESSIBILITY TESTING: Verify if the snatch bot icon is keyboad focusable', async () =>{
         const element = await DriverUtils.findElementById(driver, HomepagePageObjects.snatchBotIcon);
         const isFocusable = await AssertUtils.elementIsDisplayed(element) && await AssertUtils.elementIsEnabled(element);
         MochaUtils.verifyIsTrue(isFocusable, "SnatchBot icon is not keyboard focusable")

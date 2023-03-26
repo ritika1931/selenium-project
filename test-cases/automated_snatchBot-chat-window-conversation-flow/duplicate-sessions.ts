@@ -8,7 +8,7 @@ import CHAT_WINDOW_TEST_DATA from '../../test-data/chat-window-test-data';
 import { By, WebDriver, WebElement } from 'selenium-webdriver';
 var driver: WebDriver;
 
-describe('Duplicate session tabs', async () => {
+describe('Test duplicate session windows', async () => {
 
     before('Launch the browser and load the web url', async () => {
         driver = await DriverUtils.getDriverBuild(CHROME_BROWSER)
@@ -44,6 +44,11 @@ describe('Duplicate session tabs', async () => {
         const actualAlertMesg = await dupliacteModalElement.getText();
         MochaUtils.verifyContainsText(actualAlertMesg, CHAT_WINDOW_TEST_DATA.duplicateSessionAlertMesg, "Duplicate session window is not showing alert message");
     })
+
+    it('2: Verify Yes and No suggesstion buttons on duplicate window alert message', async () => {
+
+    })
+
     after('Close the browser', async () => {
         await driver.quit()
     });

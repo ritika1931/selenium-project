@@ -2,6 +2,7 @@ import DriverUtils from "../utils/driver.utils";
 import { Driver } from "selenium-webdriver/chrome";
 import { WebDriver, WebElement } from "selenium-webdriver";
 
+//conversation window locators
 const snatchBotIcon = "sntch_button";
 const snatchBotFrame = "//*[@id = 'sntch_iframe']"
 const chatbotIframeElement = "//*[@id = 'sntch_webchat']/div/iframe";
@@ -22,6 +23,7 @@ const menuButtonIcon = "//*[contains(@class, 'persistent-menu-btn')]";
 const infoIcon = "//*[contains(@class, 'persistent-menu-btn')]";
 
 
+//conversation window methods
 async function getChatBotIframe(driver: WebDriver){
     const IframeElement = await DriverUtils.findElementByXPath(driver, chatbotIframeElement )
     await driver.switchTo().frame(IframeElement);

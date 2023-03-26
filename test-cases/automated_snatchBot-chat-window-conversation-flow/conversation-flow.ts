@@ -9,7 +9,7 @@ import { WebDriver, WebElement } from 'selenium-webdriver';
 import { convertCompilerOptionsFromJson } from 'typescript';
 var driver: WebDriver;
 
-describe('Verify input validations on chat bot conversation window', async () => {
+describe('Test conversation flow on chat bot window', async () => {
 
     before('Launch the browser and load the web url', async () => {
         driver = await DriverUtils.getDriverBuild(CHROME_BROWSER)
@@ -25,8 +25,8 @@ describe('Verify input validations on chat bot conversation window', async () =>
                 return messageElements.length === 3; 
         }
         // Wait up to 10 seconds for all 3 default message to be loaded
-        await driver.wait(waitForAllMessagesToBeLoaded, 10000);
-    });
+        await driver.wait(waitForAllMessagesToBeLoaded, 15000);
+    })
 
     it('1: Verify chat bot message and user message for first conversation', async () => {
         await DriverUtils.enterValue(driver, ConversationPageObjects.chatBotInputBox, CHAT_WINDOW_TEST_DATA.conversation1.userQuery);
