@@ -13,3 +13,9 @@ jobs:
           name: Run Selenium tests
           command: |
             npm test
+      - store_test_results:
+          path: reports/
+      - store_artifacts:
+          path: reports/
+          destination: mochawesome_reports/
+
