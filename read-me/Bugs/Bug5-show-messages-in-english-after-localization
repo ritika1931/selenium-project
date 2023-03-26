@@ -1,0 +1,24 @@
+Scenario: Localization Testing for chat bot window
+
+Bug Description: Verify if chat box messages are getting localized after changing the language
+
+Browser: Chrome, Firefox
+
+Environment: https://snatchbot.me/
+
+User Permissions: Valid for all users
+
+Steps to Reproduce: 
+1. Navigate to url : https://snatchbot.me/
+2. Click on language button on the top bar of home page
+3. Change the language to chinese
+4. Click on chat bot window icon
+5. Check the welcome messages
+
+Expected Behavior: Chat box messages should show up in chinese after changing the language
+Actual Behavior: Chat box messages is showing up in english after changing the language
+
+Impact: Medium
+Priority: High
+
+Attachments: Screenshot available: Bug5-ScreenShot-show-messages-in-english-after-localization

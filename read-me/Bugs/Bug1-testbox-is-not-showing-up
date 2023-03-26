@@ -1,0 +1,23 @@
+Scenario: Checking the chat bot window conversation if the window screen is resized
+
+Bug Description: Text box is not showing up if the window height is reduced
+
+Browser: Chrome, Firefox
+
+Environment: https://snatchbot.me/
+
+User Permissions: Valid for all users
+
+Steps to Reproduce: 
+1. Navigate to url : https://snatchbot.me/
+2. Click on chat bot icon
+3. Reduce the height of window manually
+4. Check the text box to type in message
+
+Expected Behavior: Text Box should be displayed and enabled
+Actual Behavior: Text box is not showing up if the window height is reduced
+
+Impact: Medium
+Priority: Medium
+
+Attachments: Screenshot available with the name: Bug1-ScreenShot-testbox-is-not-showing-up

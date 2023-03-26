@@ -1,0 +1,26 @@
+Scenario: Checking the response time after recording an audio message
+
+Bug Description: Audio message takes time to show up after user records the message
+
+Browser: Chrome, Firefox
+
+Environment: https://snatchbot.me/
+
+User Permissions: Valid for all users
+
+Steps to Reproduce: 
+1. Navigate to url : https://snatchbot.me/
+2. Click on chat bot icon
+3. Click on microphone icon to start the recording
+4. Allow browser to use the microphone
+5. Record the message
+6. Click on microphone icon to stop the recording
+7. Check the time in which recored message is showing up
+
+Expected Behavior: Recorded message should show up as soon as user stops recording
+Actual Behavior: Audio message is taking time to show up after user records the message
+
+Impact: Medium
+Priority: Medium
+
+Attachments: Not applicable

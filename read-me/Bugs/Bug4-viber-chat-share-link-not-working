@@ -1,0 +1,24 @@
+Scenario: Checking viber chat share link
+
+Bug Description: Viber chat share link is navigating to empty page
+
+Browser: Chrome, Firefox
+
+Environment: https://snatchbot.me/
+
+User Permissions: Valid for all users
+
+Steps to Reproduce: 
+1. Navigate to url : https://snatchbot.me/
+2. Click on chat bot icon
+3. Click on Viber icon from the top bar
+4. Opens the new page after clicking on viber icon
+5. Page is not showing up any data
+
+Expected Behavior: It should show information regarding the viber chat share
+Actual Behavior: Page is showing no infirmation
+
+Impact: Medium
+Priority: Medium
+
+Attachments: Screenshot available with the name: Bug1-ScreenShot-testbox-is-not-showing-up

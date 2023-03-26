@@ -1,0 +1,25 @@
+Scenario: Checking if correct message is getting recorded
+
+Bug Description: Recording incorrect name
+
+Browser: Chrome, Firefox
+
+Environment: https://snatchbot.me/
+
+User Permissions: Valid for all users
+
+Steps to Reproduce: 
+1. Navigate to url : https://snatchbot.me/
+2. Click on chat bot icon
+3. Click on microphone icon to start the recording
+4. Record audio message as 'Ritika'
+5. Click on microphone icon to stop the recording
+7. Check the name if recorded correctly
+
+Expected Behavior: Recorded message should show up as 'Hi Ritika! Good to chat to you. Did I get your name right?'
+Actual Behavior: Recorded message shows up as 'Hi Let It Go! Good to chat to you. Did I get your name right?'
+
+Impact: High
+Priority: High
+
+Attachments: Bug3-Screenshot-Not-recording-correct-name
