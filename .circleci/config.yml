@@ -1,9 +1,8 @@
 version: 2.1
-orbs:
-  browsers-tools: circleci/browsers-tools@1.4.1
 jobs:
   build:
-    executor: browsers-tools/default
+    docker:
+      - image: circleci/node:16.8.0-browsers
     steps:
       - checkout
       - run:
