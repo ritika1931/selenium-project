@@ -7,6 +7,7 @@ async function getDriverBuild(browser: string) {
     const options = new chrome.Options();
     // Open browser in incognito mode
     //options.addArguments('--incognito');
+    options.addArguments('--headless');
     options.addArguments('--use-fake-ui-for-media-stream'); // allow media stream
     options.addArguments('--use-fake-device-for-media-stream'); // allow fake devices
 
