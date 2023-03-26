@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "testAll": "ts-mocha -t 30000 ./test-cases/**/*.ts  -exit",
-    "homepage": "ts-mocha -t 30000 ./test-cases/home-page/*.ts  -exit",
-    "conversationFlow": "ts-mocha -t 30000 ./test-cases/snatchBot-chat-window-conversation-flow/*.ts  -exit"
+    "testAll": "ts-mocha -t 30000 ./test-cases/**/*.ts  --reporter mochawesome --reporter-options reportDir=reports,reportFilename=test-report,overwrite=false,timestamp -exit",
+    "homepage": "ts-mocha -t 30000 ./test-cases/home-page/*.ts  --reporter mochawesome --reporter-options reportDir=reports,reportFilename=test-report,overwrite=false,timestamp -exit",
+    "conversationFlow": "ts-mocha -t 30000 ./test-cases/snatchBot-chat-window-conversation-flow/*.ts --reporter mochawesome --reporter-options reportDir=reports,reportFilename=test-report,overwrite=false,timestamp -exit"
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +21,9 @@
   },
   "devDependencies": {
     "@types/mocha": "^10.0.1",
+    "@types/mochawesome": "^6.2.1",
     "@types/node": "^18.15.8",
-    "@types/selenium-webdriver": "^4.1.13"  }
+    "@types/selenium-webdriver": "^4.1.13",
+    "mochawesome": "^7.1.3"
+  }
 }

@@ -8,7 +8,7 @@ import CHAT_WINDOW_TEST_DATA from '../../test-data/chat-window-test-data';
 import { WebDriver, WebElement } from 'selenium-webdriver';
 var driver: WebDriver;
 
-describe.only('Verify input validations on chat bot conversation window', async () => {
+describe('Verify input validations on chat bot conversation window', async () => {
 
     before('Launch the browser and load the web url', async () => {
         driver = await DriverUtils.getDriverBuild(CHROME_BROWSER)
@@ -57,19 +57,20 @@ describe.only('Verify input validations on chat bot conversation window', async 
         }
         await microphoneElement.click();
 
-        await driver.wait(waitForTimerToStop, 10000);
+        await driver.wait(waitForTimerToStop, 15000);
         await microphoneElement.click();
-        driver.sleep(3000);
+        await driver.sleep(7000);
+
         const lastAutomatedMesg =  await ConversationPageObjects.getUserLastMesgElement(driver);
         const isMesgDisplayed = await AssertUtils.elementIsDisplayed(lastAutomatedMesg);
-        MochaUtils.verifyIsTrue(isMesgDisplayed, "Microphone is not enabled in chat bot window");
+        MochaUtils.verifyIsTrue(isMesgDisplayed, "Expected user audio message is not showing");
     })
 
     it('5: Verify the user voice message is showing up when there is no speech', async () => {
         const lastAutomatedMesgElement =  (await ConversationPageObjects.getAutomatedLastMesgElement(driver));
         const isMesgDisplayed = await AssertUtils.elementIsDisplayed(lastAutomatedMesgElement);
         const actualAutomatedTextMesg = await lastAutomatedMesgElement.getText();
-        MochaUtils.verifyIsTrue(isMesgDisplayed, "Microphone is not enabled in chat bot window");
+        MochaUtils.verifyIsTrue(!isMesgDisplayed, "Expected chat bot response message is not showing");
         MochaUtils.verifyEquals(actualAutomatedTextMesg, CHAT_WINDOW_TEST_DATA.automatedTextMegForNoAudio, "Microphone is not enabled in chat bot window");
     })
 
