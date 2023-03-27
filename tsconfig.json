@@ -1,15 +1,13 @@
 {
-    "compilerOptions": {
-      "baseUrl": ".",
-      "target": "es2018",
-      "module": "commonjs",
-      "strict": true,
-      "esModuleInterop": true,
-      "moduleResolution": "node",
-      "resolveJsonModule": true,
-      "strictNullChecks": false,
-      "types": ["node", "@types/selenium-webdriver", "mocha"],
-      "paths": {"@libs/*" : ["libs/*"], "@utils/*" : ["utils/*"] }
-    }
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es2018",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "strictNullChecks": false,
+    "types": ["node", "@types/selenium-webdriver", "mocha"]
   }
-  
+}
