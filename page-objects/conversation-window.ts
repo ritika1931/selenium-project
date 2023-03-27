@@ -90,33 +90,44 @@ async function waitForTimeToStop(driver: WebDriver) {
   };
 }
 
+const getAllDefaultMessagesLength = async (
+  driver: WebDriver
+): Promise<number> => {
+  const messageElements = await DriverUtils.findElementsByClassName(
+    driver,
+    ConversationPageObjects.welcomeMesgsElement
+  );
+  return messageElements.length;
+};
+
 const ConversationPageObjects = {
-  snatchBotIcon,
-  snatchBotFrame,
-  chatbotIframeElement,
-  welcomeMesgsElement,
   chatbotCloseWindowIcon,
+  chatbotIframeElement,
   chatBotInputBox,
-  sendTextButton,
-  chatBotMicrophone,
-  chatBoxAutomatedMesgsElement,
-  userAudioMesgsElement,
-  counterIconOnMic,
   chatBotMesgText,
-  userInputTextMesg,
-  firstButtonForSelection,
-  mesgDate,
-  menuButtonIcon,
-  getChatBotIframe,
+  chatBotMicrophone,
+  chatBotResponseTextMesg,
+  chatBoxAutomatedMesgsElement,
   clickChatBotCloseIcon,
-  switchToMainPage,
-  getUserLastMesgElement,
+  counterIconOnMic,
+  firstButtonForSelection,
+  getAllDefaultMessagesLength,
   getAutomatedLastMesgElement,
-  waitForTimeToStop,
-  getUserTextMesg,
+  getChatBotIframe,
   getChatBotTextMesg,
   getChatBotTextMesgDate,
-  chatBotResponseTextMesg,
+  getUserLastMesgElement,
+  getUserTextMesg,
+  menuButtonIcon,
+  mesgDate,
+  sendTextButton,
+  snatchBotFrame,
+  snatchBotIcon,
+  switchToMainPage,
+  userAudioMesgsElement,
+  userInputTextMesg,
+  waitForTimeToStop,
+  welcomeMesgsElement,
 };
 
 export default ConversationPageObjects;

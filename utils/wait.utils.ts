@@ -24,14 +24,12 @@ async function waitUntilElementIsLocated(
 }
 
 async function waitUntilDefaultMsgLoaded(driver: WebDriver) {
-  let messageElements: WebElement[] = [];
   const waitForAllMessagesToBeLoaded = async () => {
-    messageElements = await DriverUtils.findElementsByClassName(
-      driver,
-      ConversationPageObjects.welcomeMesgsElement
-    );
-    return messageElements.length === 3;
+    const defaultMessageLength =
+      await ConversationPageObjects.getAllDefaultMessagesLength(driver);
+    return defaultMessageLength === 3;
   };
+
   // Wait up to 10 seconds for all 3 default message to be loaded
   await driver.wait(waitForAllMessagesToBeLoaded, 15000);
 }
