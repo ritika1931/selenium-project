@@ -24,7 +24,7 @@ describe('Test if home page loads successfully', async () => {
     );
   });
 
-  it.skip('2. ACCESSIBILITY TESTING: Verify if the snatch bot icon is keyboard focusable', async () => {
+  it.skip('2.ACCESSIBILITY TESTING: Verify if the snatch bot icon is keyboard focusable', async () => {
     const element = await DriverUtils.findElementById(
       driver,
       HomepagePageObjects.snatchBotIcon
