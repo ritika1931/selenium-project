@@ -1,3 +1,3 @@
-import * as MochaReport from "mochawesome";
+import * as MochaReport from 'mochawesome';
 
-export {MochaReport}
+export { MochaReport };

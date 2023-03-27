@@ -1,4 +1,3 @@
-import {assert as ChaiAssert, expect} from "chai";
+import { assert as ChaiAssert, expect } from 'chai';
 
-export {ChaiAssert, expect}
-
+export { ChaiAssert, expect };
