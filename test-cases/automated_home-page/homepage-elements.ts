@@ -34,6 +34,7 @@ describe('Test if home page loads successfully', async () => {
       'return document.activeElement === arguments[0]',
       element
     );
+    // Accessibility testing fails - Chatbot icon is not keyboard focusable
     MochaUtils.verifyEquals(
       isActiveElement,
       true,
