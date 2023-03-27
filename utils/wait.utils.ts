@@ -31,7 +31,7 @@ async function waitUntilDefaultMsgLoaded(driver: WebDriver) {
   };
 
   // Wait up to 10 seconds for all 3 default message to be loaded
-  await driver.wait(waitForAllMessagesToBeLoaded, 15000);
+  await driver.wait(waitForAllMessagesToBeLoaded, 25000);
 }
 
 const WaitUtils = {

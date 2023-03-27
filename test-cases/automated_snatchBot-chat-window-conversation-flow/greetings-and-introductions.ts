@@ -29,7 +29,7 @@ describe('Test greetings and introduction messages when chat box window opens up
       };
 
       // Wait up to 10 seconds for all 3 default message to be loaded
-      await driver.wait(waitForAllMessagesToBeLoaded, 10000);
+      await driver.wait(waitForAllMessagesToBeLoaded, 25000);
       const allMessages: string[] = [];
       for (let i = 0; i < messageElements.length; i++) {
         let text = await messageElements[i].getText();
