@@ -1,8 +1,10 @@
-import { WebElement } from 'selenium-webdriver';
+import ConversationPageObjects from '../page-objects/conversation-window';
+import { WebDriver, WebElement } from 'selenium-webdriver';
 import { By, until } from '../libs/selenium-libs';
+import DriverUtils from '../utils/driver.utils';
 
 async function waitUntilElementIsVisible(
-  driver: any,
+  driver: WebDriver,
   element: WebElement,
   timeout: number
 ) {
@@ -10,16 +12,33 @@ async function waitUntilElementIsVisible(
 }
 
 async function waitUntilElementIsLocated(
-  driver: any,
+  driver: WebDriver,
   locator: string,
-  timeout: number
+  timeout: number = 5000
 ) {
-  const popupBox = driver.wait(until.elementLocated(By.id(locator)), 5000);
-  return popupBox;
+  const locatedElement = driver.wait(
+    until.elementLocated(By.id(locator)),
+    timeout
+  );
+  return locatedElement;
+}
+
+async function waitUntilDefaultMsgLoaded(driver: WebDriver) {
+  let messageElements: WebElement[] = [];
+  const waitForAllMessagesToBeLoaded = async () => {
+    messageElements = await DriverUtils.findElementsByClassName(
+      driver,
+      ConversationPageObjects.welcomeMesgsElement
+    );
+    return messageElements.length === 3;
+  };
+  // Wait up to 10 seconds for all 3 default message to be loaded
+  await driver.wait(waitForAllMessagesToBeLoaded, 15000);
 }
 
 const WaitUtils = {
   waitUntilElementIsVisible,
   waitUntilElementIsLocated,
+  waitUntilDefaultMsgLoaded,
 };
 export default WaitUtils;

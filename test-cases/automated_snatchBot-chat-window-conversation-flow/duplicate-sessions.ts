@@ -1,12 +1,12 @@
 import DriverUtils from '../../utils/driver.utils';
 import MochaUtils from '../../utils/mocha.utils';
-import AssertUtils from '../../utils/assert.utils';
+import WaitUtils from '../../utils/wait.utils';
 import { WEB_URL, CHROME_BROWSER } from '../../constants/web-config.constants';
 import HomepagePageObjects from '../../page-objects/home-page';
 import ConversationPageObjects from '../../page-objects/conversation-window';
 import CHAT_WINDOW_TEST_DATA from '../../test-data/chat-window-test-data';
 import { By, WebDriver, WebElement } from 'selenium-webdriver';
-var driver: WebDriver;
+let driver: WebDriver;
 
 describe('Test duplicate session windows', async () => {
   before('Launch the browser and load the web url', async () => {
@@ -17,16 +17,7 @@ describe('Test duplicate session windows', async () => {
     HomepagePageObjects.clickSnatchBotIcon(driver);
     ConversationPageObjects.getChatBotIframe(driver);
 
-    let messageElements: WebElement[] = [];
-    const waitForAllMessagesToBeLoaded = async () => {
-      messageElements = await DriverUtils.findElementsByClassName(
-        driver,
-        ConversationPageObjects.welcomeMesgsElement
-      );
-      return messageElements.length === 3;
-    };
-    // Wait up to 10 seconds for all 3 default message to be loaded
-    await driver.wait(waitForAllMessagesToBeLoaded, 10000);
+    await WaitUtils.waitUntilDefaultMsgLoaded(driver);
   });
 
   it('1: Verify alert message on the duplicate session tab', async () => {
@@ -46,11 +37,11 @@ describe('Test duplicate session windows', async () => {
     await ConversationPageObjects.getChatBotIframe(driver);
     await driver.sleep(5000);
 
-    const dupliacteModalElement = await driver.findElement({
+    const duplicateSessionModalElement = await driver.findElement({
       xpath:
         "//*[@data-test='chat_modal_duplicated_conversation']/mat-dialog-content/p",
     });
-    const actualAlertMesg = await dupliacteModalElement.getText();
+    const actualAlertMesg = await duplicateSessionModalElement.getText();
     MochaUtils.verifyContainsText(
       actualAlertMesg,
       CHAT_WINDOW_TEST_DATA.duplicateSessionAlertMesg,

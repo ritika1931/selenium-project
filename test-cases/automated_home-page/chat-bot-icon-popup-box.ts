@@ -54,7 +54,7 @@ describe('Test if snatch bot pop up box and icon are showing correctly', async (
     );
     MochaUtils.verifyEquals(
       actualText,
-      HOMEPAGE_TEST_DATA.snatchIconPopUpBox_msg,
+      HOMEPAGE_TEST_DATA.snatchIconPopUpBoxMsg,
       'The snatch bot icon pop up text box is not showing correct message'
     );
   });

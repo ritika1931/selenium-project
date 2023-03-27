@@ -2,7 +2,7 @@ import DriverUtils from '../../utils/driver.utils';
 import { WEB_URL, CHROME_BROWSER } from '../../constants/web-config.constants';
 import HomepagePageObjects from '../../page-objects/home-page';
 import ConversationPageObjects from '../../page-objects/conversation-window';
-import { WebElement } from 'selenium-webdriver';
+import WaitUtils from '../../utils/wait.utils';
 import AssertUtils from '../../utils/assert.utils';
 import MochaUtils from '../../utils/mocha.utils';
 var driver: any;
@@ -16,16 +16,7 @@ describe('Test open and close of chat bot window is working successfully', async
     HomepagePageObjects.clickSnatchBotIcon(driver);
     ConversationPageObjects.getChatBotIframe(driver);
 
-    let messageElements: WebElement[] = [];
-    const waitForAllMessagesToBeLoaded = async () => {
-      messageElements = await DriverUtils.findElementsByClassName(
-        driver,
-        ConversationPageObjects.welcomeMesgsElement
-      );
-      return messageElements.length === 3;
-    };
-    // Wait up to 10 seconds for all 3 default message to be loaded
-    await driver.wait(waitForAllMessagesToBeLoaded, 10000);
+    await WaitUtils.waitUntilDefaultMsgLoaded(driver);
   });
 
   it('1: Verify close icon is showing when chat bot window opens up', async () => {
@@ -34,11 +25,11 @@ describe('Test open and close of chat bot window is working successfully', async
       driver,
       ConversationPageObjects.chatbotCloseWindowIcon
     );
-    const isIConDisplayed = await AssertUtils.elementIsDisplayed(
+    const isIconDisplayed = await AssertUtils.elementIsDisplayed(
       closeIconElement
     );
     MochaUtils.verifyIsTrue(
-      isIConDisplayed,
+      isIconDisplayed,
       'Close window icon is not showing up on chat bot window'
     );
   });

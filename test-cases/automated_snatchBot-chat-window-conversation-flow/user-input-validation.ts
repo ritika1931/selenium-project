@@ -6,6 +6,7 @@ import HomepagePageObjects from '../../page-objects/home-page';
 import ConversationPageObjects from '../../page-objects/conversation-window';
 import CHAT_WINDOW_TEST_DATA from '../../test-data/chat-window-test-data';
 import { WebDriver, WebElement } from 'selenium-webdriver';
+import WaitUtils from '../../utils/wait.utils';
 var driver: WebDriver;
 
 describe('Test input validations on chat bot conversation window', async () => {
@@ -17,16 +18,7 @@ describe('Test input validations on chat bot conversation window', async () => {
     HomepagePageObjects.clickSnatchBotIcon(driver);
     ConversationPageObjects.getChatBotIframe(driver);
 
-    let messageElements: WebElement[] = [];
-    const waitForAllMessagesToBeLoaded = async () => {
-      messageElements = await DriverUtils.findElementsByClassName(
-        driver,
-        ConversationPageObjects.welcomeMesgsElement
-      );
-      return messageElements.length === 3;
-    };
-    // Wait up to 10 seconds for all 3 default message to be loaded
-    await driver.wait(waitForAllMessagesToBeLoaded, 10000);
+    await WaitUtils.waitUntilDefaultMsgLoaded(driver);
   });
 
   it('1: Verify input text box icon is displayed and enabled when chat bot window opens up', async () => {
@@ -82,6 +74,7 @@ describe('Test input validations on chat bot conversation window', async () => {
       driver,
       ConversationPageObjects.chatBotMicrophone
     );
+    // Record speech for 5 seconds
     const waitForTimerToStop = async () => {
       const timerIcon = await DriverUtils.findElementByXPath(
         driver,
@@ -90,12 +83,13 @@ describe('Test input validations on chat bot conversation window', async () => {
       const timerCount = await timerIcon.getText();
       return timerCount === '5';
     };
-    await microphoneElement.click();
 
+    await microphoneElement.click();
     await driver.wait(waitForTimerToStop, 15000);
     await microphoneElement.click();
     await driver.sleep(7000);
 
+    //Checking if the last user message shows up in chat successfully
     const lastAutomatedMesg =
       await ConversationPageObjects.getUserLastMesgElement(driver);
     const isMesgDisplayed = await AssertUtils.elementIsDisplayed(
@@ -103,25 +97,21 @@ describe('Test input validations on chat bot conversation window', async () => {
     );
     MochaUtils.verifyIsTrue(
       isMesgDisplayed,
-      'Expected user audio message is not showing'
+      'Expected user audio message is not showing up'
     );
   });
 
-  it('5: Verify the user voice message is showing up when there is no speech', async () => {
+  it('5: Verify the chat bot message when there is no speech', async () => {
     const lastAutomatedMesgElement =
       await ConversationPageObjects.getAutomatedLastMesgElement(driver);
     const isMesgDisplayed = await AssertUtils.elementIsDisplayed(
       lastAutomatedMesgElement
     );
     const actualAutomatedTextMesg = await lastAutomatedMesgElement.getText();
-    MochaUtils.verifyIsTrue(
-      isMesgDisplayed,
-      'Expected chat bot response message is not showing'
-    );
     MochaUtils.verifyEquals(
       actualAutomatedTextMesg,
       CHAT_WINDOW_TEST_DATA.automatedTextMegForNoAudio,
-      'Microphone is not enabled in chat bot window'
+      'Expected chat bot text message is not showing up'
     );
   });
 

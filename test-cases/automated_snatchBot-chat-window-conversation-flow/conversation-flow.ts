@@ -6,8 +6,8 @@ import HomepagePageObjects from '../../page-objects/home-page';
 import ConversationPageObjects from '../../page-objects/conversation-window';
 import CHAT_WINDOW_TEST_DATA from '../../test-data/chat-window-test-data';
 import { WebDriver, WebElement } from 'selenium-webdriver';
-import { convertCompilerOptionsFromJson } from 'typescript';
-var driver: WebDriver;
+import WaitUtils from '../../utils/wait.utils';
+let driver: WebDriver;
 
 describe('Test conversation flow on chat bot window', async () => {
   before('Launch the browser and load the web url', async () => {
@@ -18,16 +18,7 @@ describe('Test conversation flow on chat bot window', async () => {
     HomepagePageObjects.clickSnatchBotIcon(driver);
     ConversationPageObjects.getChatBotIframe(driver);
 
-    let messageElements: WebElement[] = [];
-    const waitForAllMessagesToBeLoaded = async () => {
-      messageElements = await DriverUtils.findElementsByClassName(
-        driver,
-        ConversationPageObjects.welcomeMesgsElement
-      );
-      return messageElements.length === 3;
-    };
-    // Wait up to 10 seconds for all 3 default message to be loaded
-    await driver.wait(waitForAllMessagesToBeLoaded, 15000);
+    await WaitUtils.waitUntilDefaultMsgLoaded(driver);
   });
 
   it('1: Verify chat bot message and user message for first conversation', async () => {

@@ -5,7 +5,7 @@ import HomepagePageObjects from '../../page-objects/home-page';
 import ConversationPageObjects from '../../page-objects/conversation-window';
 import CHAT_WINDOW_TEST_DATA from '../../test-data/chat-window-test-data';
 import { WebDriver, WebElement } from 'selenium-webdriver';
-var driver: WebDriver;
+let driver: WebDriver;
 
 describe('Test greetings and introduction messages when chat box window opens up', async () => {
   before('Launch the browser and load the web url', async () => {
@@ -19,7 +19,7 @@ describe('Test greetings and introduction messages when chat box window opens up
       HomepagePageObjects.clickSnatchBotIcon(driver);
       ConversationPageObjects.getChatBotIframe(driver);
 
-      var messageElements: WebElement[] = [];
+      let messageElements: WebElement[] = [];
       const waitForAllMessagesToBeLoaded = async () => {
         messageElements = await DriverUtils.findElementsByClassName(
           driver,
